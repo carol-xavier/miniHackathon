@@ -1,20 +1,20 @@
 function getAddress() {
-    const home = document.querySelector('.home-page');
-    home.classList.add('hidden');
-    
-    const address = document.querySelector('.get-address');
-    address.classList.remove('hidden');
+  const home = document.querySelector('.home-page');
+  home.classList.add('hidden');
+
+  const address = document.querySelector('.get-address');
+  address.classList.remove('hidden');
 }
 
-function getLocation(){
-if ("geolocation" in navigator) {
+function getLocation() {
+  if ("geolocation" in navigator) {
 
     navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position)
-        requestWeather(position);
-    },function(error){
-            console.log(error)        
-        
+      console.log(position)
+      requestWeather(position);
+    }, function (error) {
+      console.log(error)
+
     })
 
   } else {
@@ -22,18 +22,24 @@ if ("geolocation" in navigator) {
   }
 }
 
-function requestWeather(position){
+function requestWeather(position) {
   console.log(position);
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
+  let lat = position.coords.latitude;
+  let long = position.coords.longitude;
 
-    const promise = axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=698b6b676a7b36a3c34d1cab2b6e4466`);
-    console.log(promise);
-    promise.then(displayWeather);
+  const promise = axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=698b6b676a7b36a3c34d1cab2b6e4466`);
+  console.log(promise);
+  promise.then(displayWeather);
 }
 
-function displayWeather(resposta){
-console.log(resposta);
+function displayWeather(resposta) {
+  console.log(resposta);
+
+ document.querySelector('.home-page').classList.add('hidden');
+  document.querySelector('.show-weather').classList.remove('hidden');
+
+  let temp = document.querySelector(".temperature");
+  
 }
 
 
