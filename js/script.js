@@ -35,11 +35,15 @@ function requestWeather(position) {
 function displayWeather(resposta) {
   console.log(resposta);
 
- document.querySelector('.home-page').classList.add('hidden');
+  document.querySelector('.home-page').classList.add('hidden');
   document.querySelector('.show-weather').classList.remove('hidden');
 
+  let tempData = resposta.data.main;
+  console.log(tempData);
+
   let temp = document.querySelector(".temperature");
-  
+  temp.innerHTML =   `<h6 class="temperature">${tempData.temp}</h6>`;
+
 }
 
 
